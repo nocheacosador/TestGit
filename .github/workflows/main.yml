@@ -28,4 +28,4 @@ jobs:
         with:
           python-version: '3.10' 
       # Runs a single command using the runners shell
-        run: python3 main.py
+      - run: python3 main.py
