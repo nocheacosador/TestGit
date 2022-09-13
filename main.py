@@ -1,7 +1,7 @@
 from Printing import Printer, GetPrinter
 
 def Main():
-    printer = GetPrinter('Stdout')
+    printer = GetPrinter('html')
 
     printer.Header('Kopūstas')
     printer.Paragraph(  'Kopūstas (Brassica oleracea) – bastutinių (Brassicaceae) '
