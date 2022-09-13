@@ -35,9 +35,28 @@ class StdoutPrinter(Printer):
         pass
 
 
+class HtmlPrinter(Printer):
+    def __init__(self) -> None:
+        super().__init__()
+        self.content = '<!DOCTYPE html><html><head><title>Title</title></head><body>'
+
+
+    def Header(self, header: str) -> None:
+        self.content += f'<h1>{header}</h1>'
+    
+    def Paragraph(self, paragraph: str) -> None:
+        self.content += f'<p>{paragraph}</p>'
+
+    def Print(self) -> None:
+        self.content += '</body></html>'
+        with open('out.html', 'w', encoding='utf-8') as file:
+            file.write(self.content)
+        
 def GetPrinter(printer: str) -> Printer:
     match printer:
-        case 'Stdout':
+        case 'stdout':
             return StdoutPrinter()
+        case 'html':
+            return HtmlPrinter()
         case _:
             raise RuntimeError(f"There is no printer '{printer}'")
