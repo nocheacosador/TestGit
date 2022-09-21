@@ -41,8 +41,9 @@ class HtmlPrinter(Printer):
         self.content = '<!DOCTYPE html><html><head><title>Title</title></head><body>'
 
 
-    def Header(self, header: str) -> None:
-        self.content += f'<h1>{header}</h1>'
+    def Header(self, header: str, level: int = 3) -> None:
+        if level > 3: level = 3
+        self.content += f'<h{level}>{header}</h{level}>'
     
     def Paragraph(self, paragraph: str) -> None:
         self.content += f'<p>{paragraph}</p>'
